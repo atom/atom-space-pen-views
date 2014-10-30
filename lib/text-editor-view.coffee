@@ -101,15 +101,15 @@ class TextEditorView extends View
   on: (eventName) ->
     switch eventName
       when 'cursor:moved'
-        deprecate('Use TextEditor::onDidChangeCursorPosition instead')
+        Grim.deprecate('Use TextEditor::onDidChangeCursorPosition instead')
       when 'editor:attached'
-        deprecate('Use TextEditor::onDidAddTextEditor instead')
+        Grim.deprecate('Use TextEditor::onDidAddTextEditor instead')
       when 'editor:detached'
-        deprecate('Use TextEditor::onDidDestroy instead')
+        Grim.deprecate('Use TextEditor::onDidDestroy instead')
       when 'editor:will-be-removed'
-        deprecate('Use TextEditor::onDidDestroy instead')
+        Grim.deprecate('Use TextEditor::onDidDestroy instead')
       when 'selection:changed'
-        deprecate('Use TextEditor::onDidChangeSelectionRange instead')
+        Grim.deprecate('Use TextEditor::onDidChangeSelectionRange instead')
     super
 
   Object.defineProperty @::, 'lineHeight', get: -> @model.getLineHeightInPixels()
