@@ -1,6 +1,6 @@
 {
   "name": "atom-space-pen-views",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Atom SpacePen views that used to live in core.",
   "main": "./lib/main",
   "scripts": {},
