@@ -1,6 +1,5 @@
 spec
 script
-*.coffee
 .npmignore
 .DS_Store
 npm-debug.log
