@@ -2,6 +2,8 @@
 fuzzyFilter = require('fuzzaldrin').filter
 TextEditorView = require './text-editor-view'
 
+atom.themes.requireStylesheet(require.resolve('../stylesheets/select-list.less'))
+
 # Essential: Provides a view that renders a list of items with an editor that
 # filters the items. Used by many packages such as the fuzzy-finder,
 # command-palette, symbols-view and autocomplete.
