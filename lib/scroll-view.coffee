@@ -1,4 +1,4 @@
-{View} = require 'atom'
+{View} = require 'space-pen'
 
 # Extended: Represents a view that scrolls.
 #

@@ -1,4 +1,4 @@
-{$, View} = require 'atom'
+{$, View} = require 'space-pen'
 fuzzyFilter = require('fuzzaldrin').filter
 TextEditorView = require './text-editor-view'
 

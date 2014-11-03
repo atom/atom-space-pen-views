@@ -1,4 +1,5 @@
-{View, $, TextEditorElement} = require 'atom'
+{View, $} = require 'space-pen'
+{TextEditorElement, CompositeDisposable} = require 'atom'
 Grim = require 'grim'
 
 # Public: Represents the entire visual pane in Atom.
@@ -64,6 +65,13 @@ class TextEditorView extends View
 
     # Handle construction with an element
     @element = modelOrParams
+
+    @element.onDidAttach =>
+      @trigger 'editor:attached', [this]
+
+    @element.onDidDetach =>
+      @trigger 'editor:detached', [this]
+
     super
 
   setModel: (@model) ->
@@ -74,7 +82,8 @@ class TextEditorView extends View
     @overlayer = @find('.lines').addClass('overlayer')
     @hiddenInput = @.find('.hidden-input')
 
-    @subscribe atom.config.observe 'editor.showLineNumbers', =>
+    @subscriptions = new CompositeDisposable
+    @subscriptions.add atom.config.observe 'editor.showLineNumbers', =>
       @gutter = @find('.gutter')
 
       @gutter.removeClassFromAllLines = (klass) =>
@@ -90,6 +99,8 @@ class TextEditorView extends View
         lines = @gutter.find("[data-buffer-row='#{bufferRow}']")
         lines.addClass(klass)
         lines.length > 0
+
+    @subscriptions.add @model.onDidDestroy => @subscriptions.dispose()
 
   # Public: Get the underlying editor model for this view.
   #
@@ -120,16 +131,6 @@ class TextEditorView extends View
   Object.defineProperty @::, 'isFocused', get: -> @component?.state.focused
   Object.defineProperty @::, 'mini', get: -> @component?.props.mini
   Object.defineProperty @::, 'component', get: -> @element?.component
-
-  afterAttach: (onDom) ->
-    return unless onDom
-    return if @attached
-    @attached = true
-    @trigger 'editor:attached', [this]
-
-  beforeRemove: ->
-    @trigger 'editor:detached', [this]
-    @attached = false
 
   remove: (selector, keepData) ->
     @model.destroy() unless keepData
