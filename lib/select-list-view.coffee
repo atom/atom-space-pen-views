@@ -4,34 +4,6 @@ TextEditorView = require './text-editor-view'
 
 atom.themes.requireStylesheet(require.resolve('../stylesheets/select-list.less'))
 
-# Essential: Provides a view that renders a list of items with an editor that
-# filters the items. Used by many packages such as the fuzzy-finder,
-# command-palette, symbols-view and autocomplete.
-#
-# Subclasses must implement the following methods:
-#
-# * {::viewForItem}
-# * {::confirmed}
-#
-# ## Requiring in packages
-#
-# ```coffee
-# {SelectListView} = require 'atom'
-#
-# class MySelectListView extends SelectListView
-#   initialize: ->
-#     super
-#     @addClass('overlay from-top')
-#     @setItems(['Hello', 'World'])
-#     atom.workspaceView.append(this)
-#     @focusFilterEditor()
-#
-#   viewForItem: (item) ->
-#     "<li>#{item}</li>"
-#
-#   confirmed: (item) ->
-#     console.log("#{item} was selected")
-# ```
 module.exports =
 class SelectListView extends View
   @content: ->
