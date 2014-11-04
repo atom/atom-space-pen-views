@@ -63,34 +63,46 @@ class SelectListView extends View
     @filterEditorView.on 'focusout', =>
       @cancel() unless @cancelling
 
+    @command 'core:move-up', =>
+      @selectPreviousItemView()
+      false
+
+    @command 'core:move-down', =>
+      @selectNextItemView()
+      false
+
+    @command 'core:move-to-top', =>
+      @selectItemView(@list.find('li:first'))
+      @list.scrollToTop()
+      false
+
+    @command 'core:move-to-bottom', =>
+      @selectItemView(@list.find('li:last'))
+      @list.scrollToBottom()
+      false
+
+    @command 'core:confirm', =>
+      @confirmSelection()
+      false
+
+    @command 'core:cancel', =>
+      @cancel()
+      false
+
     # This prevents the focusout event from firing on the filter editor view
     # when the list is scrolled by clicking the scrollbar and dragging.
     @list.on 'mousedown', ({target}) =>
       false if target is @list[0]
 
-    @on 'core:move-up', =>
-      @selectPreviousItemView()
-    @on 'core:move-down', =>
-      @selectNextItemView()
-    @on 'core:move-to-top', =>
-      @selectItemView(@list.find('li:first'))
-      @list.scrollToTop()
-      false
-    @on 'core:move-to-bottom', =>
-      @selectItemView(@list.find('li:last'))
-      @list.scrollToBottom()
-      false
-
-    @on 'core:confirm', => @confirmSelection()
-    @on 'core:cancel', => @cancel()
-
     @list.on 'mousedown', 'li', (e) =>
       @selectItemView($(e.target).closest('li'))
       e.preventDefault()
+      false
 
     @list.on 'mouseup', 'li', (e) =>
       @confirmSelection() if $(e.target).closest('li').hasClass('selected')
       e.preventDefault()
+      false
 
   ###
   Section: Methods that must be overridden
