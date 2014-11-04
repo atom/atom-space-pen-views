@@ -78,9 +78,9 @@ class TextEditorView extends View
     @trigger 'editor:attached', [this]
 
   detached: ->
-    return unless @model.isDestroyed()
-    @isAttached = false
-    @trigger 'editor:detached', [this]
+    if @getModel()?.isDestroyed()
+      @isAttached = false
+      @trigger 'editor:detached', [this]
 
   setModel: (@model) ->
     @editor = @model
