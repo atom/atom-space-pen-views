@@ -66,13 +66,20 @@ class TextEditorView extends View
     # Handle construction with an element
     @element = modelOrParams
 
-    @element.onDidAttach =>
-      @trigger 'editor:attached', [this]
-
-    @element.onDidDetach =>
-      @trigger 'editor:detached', [this]
+    @element.onDidAttach => @attached()
+    @element.onDidDetach => @detached()
 
     super
+
+  attached: ->
+    return if @isAttached
+    @isAttached = true
+    @trigger 'editor:attached', [this]
+
+  detached: ->
+    return unless @model.isDestroyed()
+    @isAttached = false
+    @trigger 'editor:detached', [this]
 
   setModel: (@model) ->
     @editor = @model
