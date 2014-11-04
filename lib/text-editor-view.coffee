@@ -66,8 +66,9 @@ class TextEditorView extends View
     # Handle construction with an element
     @element = modelOrParams
 
-    @element.onDidAttach => @attached()
-    @element.onDidDetach => @detached()
+    unless @useLegacyAttachHooks
+      @element.onDidAttach => @attached()
+      @element.onDidDetach => @detached()
 
     super
 
