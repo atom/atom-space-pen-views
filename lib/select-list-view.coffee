@@ -57,9 +57,10 @@ class SelectListView extends View
   # This method can be overridden by subclasses but `super` should always
   # be called.
   initialize: ->
-    @filterEditorView.getEditor().getBuffer().onDidChange =>
+    @filterEditorView.getModel().getBuffer().onDidChange =>
       @schedulePopulateList()
-    @filterEditorView.hiddenInput.on 'focusout', =>
+
+    @filterEditorView.on 'focusout', =>
       @cancel() unless @cancelling
 
     # This prevents the focusout event from firing on the filter editor view
@@ -160,7 +161,7 @@ class SelectListView extends View
   #
   # Returns a {String} to use when fuzzy filtering the elements to display.
   getFilterQuery: ->
-    @filterEditorView.getEditor().getText()
+    @filterEditorView.getText()
 
   # Extended: Set the maximum numbers of items to display in the list.
   #
@@ -242,7 +243,7 @@ class SelectListView extends View
   cancel: ->
     @list.empty()
     @cancelling = true
-    filterEditorViewFocused = @filterEditorView.isFocused
+    filterEditorViewFocused = @filterEditorView.hasFocus()
     @cancelled()
     @detach()
     @restoreFocus() if filterEditorViewFocused
@@ -256,7 +257,7 @@ class SelectListView extends View
   # Extended: Store the currently focused element. This element will be given
   # back focus when {::cancel} is called.
   storeFocusedElement: ->
-    @previouslyFocusedElement = $(':focus')
+    @previouslyFocusedElement = document.activeElement
 
   ###
   Section: Private
@@ -289,13 +290,10 @@ class SelectListView extends View
       @list.scrollBottom(desiredBottom)
 
   restoreFocus: ->
-    if @previouslyFocusedElement?.isOnDom()
-      @previouslyFocusedElement.focus()
-    else
-      atom.workspaceView.focus()
+    @previouslyFocusedElement.focus()
 
   cancelled: ->
-    @filterEditorView.getEditor().setText('')
+    @filterEditorView.setText('')
 
   getSelectedItemView: ->
     @list.find('li.selected')
