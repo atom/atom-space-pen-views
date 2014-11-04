@@ -2,35 +2,6 @@
 {TextEditorElement, CompositeDisposable} = require 'atom'
 Grim = require 'grim'
 
-# Public: Represents the entire visual pane in Atom.
-#
-# The TextEditorView manages the {TextEditor}, which manages the file buffers.
-# `TextEditorView` is intentionally sparse. Most of the things you'll want
-# to do are on {TextEditor}.
-#
-# ## Examples
-#
-# Requiring in packages
-#
-# ```coffee
-# {TextEditorView} = require 'atom'
-#
-# miniEditorView = new TextEditorView(mini: true)
-# ```
-#
-# Iterating over the open editor views
-#
-# ```coffee
-# for editorView in atom.workspaceView.getEditorViews()
-#   console.log(editorView.getModel().getPath())
-# ```
-#
-# Subscribing to every current and future editor
-#
-# ```coffee
-# atom.workspace.eachEditorView (editorView) ->
-#   console.log(editorView.getModel().getPath())
-# ```
 module.exports =
 class TextEditorView extends View
   # The constructor for setting up an `TextEditorView` instance.
@@ -41,6 +12,8 @@ class TextEditorView extends View
   #    but without all the chrome, like scrollbars, gutter, _e.t.c._.
   #
   constructor: (modelOrParams, props) ->
+    modelOrParams ?= {}
+
     # Handle direct construction with an editor or params
     unless modelOrParams instanceof HTMLElement
       if modelOrParams.constructor isnt Object
@@ -71,16 +44,6 @@ class TextEditorView extends View
       @element.onDidDetach => @detached()
 
     super
-
-  attached: ->
-    return if @isAttached
-    @isAttached = true
-    @trigger 'editor:attached', [this]
-
-  detached: ->
-    if @getModel()?.isDestroyed()
-      @isAttached = false
-      @trigger 'editor:detached', [this]
 
   setModel: (@model) ->
     @editor = @model
@@ -221,9 +184,6 @@ class TextEditorView extends View
     pane = @getPaneView()
     pane?.splitDown(pane?.copyActiveItem()).activeView
 
-  # Public: Get this {TextEditorView}'s {PaneView}.
-  #
-  # Returns a {PaneView}
   getPaneView: ->
     @parent('.item-views').parents('atom-pane').view()
   getPane: ->
