@@ -32,7 +32,7 @@ class SelectListView extends View
     @filterEditorView.getModel().getBuffer().onDidChange =>
       @schedulePopulateList()
 
-    @filterEditorView.on 'focusout', =>
+    @filterEditorView.on 'blur', (e) =>
       @cancel() unless @cancelling
 
     @command 'core:move-up', =>
