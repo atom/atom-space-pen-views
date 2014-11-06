@@ -229,7 +229,6 @@ class SelectListView extends View
     @cancelling = true
     filterEditorViewFocused = @filterEditorView.hasFocus()
     @cancelled()
-    @detach()
     @restoreFocus() if filterEditorViewFocused
     @cancelling = false
     clearTimeout(@scheduleTimeout)
