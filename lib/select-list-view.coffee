@@ -228,7 +228,8 @@ class SelectListView extends View
     @list.empty()
     @cancelling = true
     filterEditorViewFocused = @filterEditorView.hasFocus()
-    @cancelled()
+    @cancelled?()
+    @filterEditorView.setText('')
     @restoreFocus() if filterEditorViewFocused
     @cancelling = false
     clearTimeout(@scheduleTimeout)
@@ -274,9 +275,6 @@ class SelectListView extends View
 
   restoreFocus: ->
     @previouslyFocusedElement.focus()
-
-  cancelled: ->
-    @filterEditorView.setText('')
 
   getSelectedItemView: ->
     @list.find('li.selected')
