@@ -275,7 +275,7 @@ class SelectListView extends View
       @list.scrollBottom(desiredBottom)
 
   restoreFocus: ->
-    @previouslyFocusedElement.focus()
+    @previouslyFocusedElement?.focus()
 
   getSelectedItemView: ->
     @list.find('li.selected')
