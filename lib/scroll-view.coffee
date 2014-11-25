@@ -30,9 +30,10 @@
 module.exports =
 class ScrollView extends View
   initialize: ->
-    @on 'core:move-up', => @scrollUp()
-    @on 'core:move-down', => @scrollDown()
-    @on 'core:page-up', => @pageUp()
-    @on 'core:page-down', => @pageDown()
-    @on 'core:move-to-top', => @scrollToTop()
-    @on 'core:move-to-bottom', => @scrollToBottom()
+    atom.commands.add @element,
+      'core:move-up': => @scrollUp()
+      'core:move-down': => @scrollDown()
+      'core:page-up': => @pageUp()
+      'core:page-down': => @pageDown()
+      'core:move-to-top': => @scrollToTop()
+      'core:move-to-bottom': => @scrollToBottom()
