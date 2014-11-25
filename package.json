@@ -20,7 +20,7 @@
   "dependencies": {
     "fuzzaldrin": "^2.1.0",
     "grim": "^0.12.0",
-    "space-pen": "^4.1.1"
+    "space-pen": "^4.2.1"
   },
   "devDependencies": {
     "coffee-script": "^1.7.0",
