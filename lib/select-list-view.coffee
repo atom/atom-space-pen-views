@@ -35,31 +35,32 @@ class SelectListView extends View
     @filterEditorView.on 'blur', (e) =>
       @cancel() unless @cancelling
 
-    @command 'core:move-up', =>
-      @selectPreviousItemView()
-      false
+    atom.commands.add @element,
+      'core:move-up': (event) =>
+        @selectPreviousItemView()
+        event.stopPropagation()
 
-    @command 'core:move-down', =>
-      @selectNextItemView()
-      false
+      'core:move-down': (event) =>
+        @selectNextItemView()
+        event.stopPropagation()
 
-    @command 'core:move-to-top', =>
-      @selectItemView(@list.find('li:first'))
-      @list.scrollToTop()
-      false
+      'core:move-to-top': (event) =>
+        @selectItemView(@list.find('li:first'))
+        @list.scrollToTop()
+        event.stopPropagation()
 
-    @command 'core:move-to-bottom', =>
-      @selectItemView(@list.find('li:last'))
-      @list.scrollToBottom()
-      false
+      'core:move-to-bottom': (event) =>
+        @selectItemView(@list.find('li:last'))
+        @list.scrollToBottom()
+        event.stopPropagation()
 
-    @command 'core:confirm', =>
-      @confirmSelection()
-      false
+      'core:confirm': (event) =>
+        @confirmSelection()
+        event.stopPropagation()
 
-    @command 'core:cancel', =>
-      @cancel()
-      false
+      'core:cancel': (event) =>
+        @cancel()
+        event.stopPropagation()
 
     # This prevents the focusout event from firing on the filter editor view
     # when the list is scrolled by clicking the scrollbar and dragging.
