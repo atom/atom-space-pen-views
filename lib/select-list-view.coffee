@@ -68,7 +68,6 @@ class SelectListView extends View
       false if target is @list[0]
 
     @list.on 'mousedown', 'li', (e) =>
-      console.log "MOUSEDOWN"
       @selectItemView($(e.target).closest('li'))
       e.preventDefault()
       false
