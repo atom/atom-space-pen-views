@@ -11,7 +11,9 @@ class TextEditorView extends View
 
     @element = document.createElement('atom-text-editor')
     @element.setAttribute(name, value) for name, value of attributes
-    @element.__spacePenView = this if @element.__spacePenView?
+    if @element.__spacePenView?
+      @element.__spacePenView = this
+      @element.__allowViewAccess = true
 
     super
 
