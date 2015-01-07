@@ -1,4 +1,4 @@
-# Atom SpacePen Views
+# Atom SpacePen Views [![Build Status](https://travis-ci.org/atom/atom-space-pen-views.svg?branch=master)](https://travis-ci.org/atom/atom-space-pen-views)
 
 This library contains SpacePen views that used to be provided as part of Atom
 Core. `TextEditorView`, `SelectListView`, and `ScrollView` exports from the
