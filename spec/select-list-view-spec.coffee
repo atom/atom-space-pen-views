@@ -1,5 +1,5 @@
 {$, $$} = require 'space-pen'
-SelectListView = require '../lib/select-list-view'
+SelectListView = require '../src/select-list-view'
 
 describe "SelectListView", ->
   [selectList, items, list, filterEditorView] = []
