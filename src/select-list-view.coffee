@@ -1,6 +1,7 @@
 {$, View} = require 'space-pen'
-fuzzyFilter = require('fuzzaldrin').filter
 TextEditorView = require './text-editor-view'
+
+fuzzyFilter = null # defer until used
 
 atom.themes.requireStylesheet(require.resolve('../stylesheets/select-list.less'))
 
@@ -162,6 +163,7 @@ class SelectListView extends View
 
     filterQuery = @getFilterQuery()
     if filterQuery.length
+      fuzzyFilter ?= require('fuzzaldrin').filter
       filteredItems = fuzzyFilter(@items, filterQuery, key: @getFilterKey())
     else
       filteredItems = @items
