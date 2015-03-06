@@ -106,7 +106,7 @@ subclasses. Called when the item is about to appended to the list view.
 * `item` The model item being rendered. This will always be one of the items
   previously passed to `::setItems`.
 
-Returns a String of HTML, DOM element, jQuery object, or View.
+Returns a String of HTML, DOM element, jQuery object, or View. Note the root element must be an `li`.
 
 #### `::confirmed`
 
