@@ -161,6 +161,8 @@ Set the maximum numbers of items to display in the list.
 
 * `maxItems` The maximum {Number} of items to display.
 
+TIP: call this before `setItems` otherwise the first time the list displays it will display all the items.
+
 #### `::populateList`
 
 Extended: Populate the list view with the model items previously set by calling
