@@ -159,9 +159,10 @@ Returns a {String} to use when fuzzy filtering the elements to display.
 
 Set the maximum numbers of items to display in the list.
 
-* `maxItems` The maximum {Number} of items to display.
+This should be called before `setItems` is called or else the first time the
+list displays it will include all the items.
 
-TIP: call this before `setItems` otherwise the first time the list displays it will display all the items.
+* `maxItems` The maximum {Number} of items to display.
 
 #### `::populateList`
 
