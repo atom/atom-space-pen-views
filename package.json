@@ -21,7 +21,6 @@
   ],
   "dependencies": {
     "fuzzaldrin": "^2.1.0",
-    "grim": "^1.0.0",
     "space-pen": "^5.0.1"
   },
   "devDependencies": {
