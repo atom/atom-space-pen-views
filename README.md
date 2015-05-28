@@ -84,7 +84,8 @@ class MySelectListView extends SelectListView
    super
    @addClass('overlay from-top')
    @setItems(['Hello', 'World'])
-   atom.workspaceView.append(this)
+   @panel ?= atom.workspace.addModalPanel(item: this) 
+   @panel.show()
    @focusFilterEditor()
 
  viewForItem: (item) ->
@@ -92,6 +93,9 @@ class MySelectListView extends SelectListView
 
  confirmed: (item) ->
    console.log("#{item} was selected")
+   
+ cancelled: ->
+   console.log("This view was cancelled")
 ```
 
 ## Methods
