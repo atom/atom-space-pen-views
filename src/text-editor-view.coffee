@@ -4,12 +4,16 @@ module.exports =
 class TextEditorView extends View
   # The constructor for setting up an `TextEditorView` instance.
   constructor: (params={}) ->
-    {mini, placeholderText, attributes} = params
+    {mini, placeholderText, attributes, editor} = params
     attributes ?= {}
     attributes['mini'] = mini if mini?
     attributes['placeholder-text'] = placeholderText if placeholderText?
 
-    @element = document.createElement('atom-text-editor')
+    if editor?
+      @element = atom.views.getView(editor)
+    else
+      @element = document.createElement('atom-text-editor')
+
     @element.setAttribute(name, value) for name, value of attributes
     if @element.__spacePenView?
       @element.__spacePenView = this
