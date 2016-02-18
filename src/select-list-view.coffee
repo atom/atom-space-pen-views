@@ -34,7 +34,7 @@ class SelectListView extends View
       @schedulePopulateList()
 
     @filterEditorView.on 'blur', (e) =>
-      @cancel() unless @cancelling
+      @cancel() unless @cancelling or not atom.isFocused()
 
     atom.commands.add @element,
       'core:move-up': (event) =>
