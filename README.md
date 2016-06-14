@@ -1,4 +1,6 @@
-# Atom SpacePen Views [![Build Status](https://travis-ci.org/atom/atom-space-pen-views.svg?branch=master)](https://travis-ci.org/atom/atom-space-pen-views)
+# Atom SpacePen Views
+[![OS X Build Status](https://travis-ci.org/atom/atom-space-pen-views.svg?branch=master)](https://travis-ci.org/atom/atom-space-pen-views) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/5lgv47has6n8uhuv/branch/master?svg=true)](https://ci.appveyor.com/project/Atom/atom-space-pen-views/branch/master) [![Dependency Status](https://david-dm.org/atom/atom-space-pen-views.svg)](https://david-dm.org/atom/atom-space-pen-views)
+
 
 This library contains SpacePen views that used to be provided as part of Atom
 Core. `TextEditorView`, `SelectListView`, and `ScrollView` exports from the
@@ -84,7 +86,7 @@ class MySelectListView extends SelectListView
    super
    @addClass('overlay from-top')
    @setItems(['Hello', 'World'])
-   @panel ?= atom.workspace.addModalPanel(item: this) 
+   @panel ?= atom.workspace.addModalPanel(item: this)
    @panel.show()
    @focusFilterEditor()
 
@@ -93,7 +95,7 @@ class MySelectListView extends SelectListView
 
  confirmed: (item) ->
    console.log("#{item} was selected")
-   
+
  cancelled: ->
    console.log("This view was cancelled")
 ```
