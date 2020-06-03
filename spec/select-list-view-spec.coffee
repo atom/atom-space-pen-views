@@ -1,4 +1,4 @@
-{$, $$} = require 'space-pen'
+{$, $$} = require 'space-pen-plus'
 SelectListView = require '../src/select-list-view'
 
 describe "SelectListView", ->

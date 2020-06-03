@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "fuzzaldrin": "^2.1.0",
-    "space-pen": "^5.1.2"
+    "space-pen-plus": "^6.0.3"
   },
   "devDependencies": {
     "coffee-cache": "^1.0.2",

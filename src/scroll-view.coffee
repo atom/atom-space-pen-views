@@ -1,4 +1,4 @@
-{View} = require 'space-pen'
+{View} = require 'space-pen-plus'
 
 # Extended: Represents a view that scrolls.
 #
