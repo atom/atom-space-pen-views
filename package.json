@@ -3,6 +3,11 @@
   "version": "2.2.0",
   "description": "Atom SpacePen views that used to live in core.",
   "main": "./lib/main",
+  "files": [
+    "lib/**",
+    "src/**",
+    "stylesheets/**"
+  ],
   "scripts": {
     "test": "atom --test spec",
     "clean": "shx rm -rf lib",

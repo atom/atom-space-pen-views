@@ -1,9 +1,0 @@
-spec
-src
-script
-.npmignore
-.DS_Store
-npm-debug.log
-.travis.yml
-.pairs
-Gruntfile.coffee
