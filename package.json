@@ -3,6 +3,7 @@
   "version": "2.2.0",
   "description": "Atom SpacePen views that used to live in core.",
   "main": "./lib/main",
+  "es": "./lib/main.es.js",
   "files": [
     "lib/**",
     "src/**",
@@ -10,8 +11,10 @@
   ],
   "scripts": {
     "test": "atom --test spec",
-    "clean": "shx rm -rf lib",
-    "build": "npm run clean && shx cp -r src lib && coffee -c -M -o lib lib && shx rm -r lib/*.coffee",
+    "dev-test": "npm run clean && env NODE_ENV=development rollup -c && atom --test spec",
+    "clean": "shx rm -rf lib spec/*.js spec/*.js.map",
+    "dev": "npm run clean && env NODE_ENV=development rollup -c -w",
+    "build": "npm run clean && env NODE_ENV=production rollup -c",
     "prepare": "npm run build"
   },
   "atomTestRunner": "./runner",
