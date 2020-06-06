@@ -1,10 +1,5 @@
-{View, jQuery, $, $$, $$$} = require 'space-pen-plus'
+export {View, jQuery, $, $$, $$$} from 'space-pen-plus/src/space-pen'
 
-exports.View = View
-exports.jQuery = jQuery
-exports.$ = $
-exports.$$ = $$
-exports.$$$ = $$$
-exports.TextEditorView = require './text-editor-view'
-exports.SelectListView = require './select-list-view'
-exports.ScrollView = require './scroll-view'
+export {default as TextEditorView} from './text-editor-view'
+export {default as SelectListView} from './select-list-view'
+export {default as ScrollView} from './scroll-view'

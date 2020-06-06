@@ -1,4 +1,4 @@
-{View} = require 'space-pen-plus'
+import {View} from 'space-pen-plus/src/space-pen'
 
 # Extended: Represents a view that scrolls.
 #
@@ -27,8 +27,7 @@
 #     @text('super long content that will scroll')
 # ```
 #
-module.exports =
-class ScrollView extends View
+export default class ScrollView extends View
   initialize: ->
     atom.commands.add @element,
       'core:move-up': => @scrollUp()

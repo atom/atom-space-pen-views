@@ -1,7 +1,6 @@
-{View, $} = require 'space-pen-plus'
+import {View} from 'space-pen-plus/src/space-pen'
 
-module.exports =
-class TextEditorView extends View
+export default class TextEditorView extends View
   # The constructor for setting up an `TextEditorView` instance.
   constructor: (params={}) ->
     {mini, placeholderText, attributes, editor} = params
