@@ -4,7 +4,7 @@ import TextEditorView from './text-editor-view'
 
 fuzzyFilter = null # defer until used
 
-atom.themes.requireStylesheet(require.resolve('../stylesheets/select-list.less'))
+atom.themes.requireStylesheet(__dirname + '/../stylesheets/select-list.less')
 
 export default class SelectListView extends View
   @content: ->
