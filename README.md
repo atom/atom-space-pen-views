@@ -1,4 +1,5 @@
-# Atom SpacePen Views
+##### Atom and all repositories under Atom will be archived on December 15, 2022. Learn more in our [official announcement](https://github.blog/2022-06-08-sunsetting-atom/)
+ # Atom SpacePen Views
 [![OS X Build Status](https://travis-ci.org/atom/atom-space-pen-views.svg?branch=master)](https://travis-ci.org/atom/atom-space-pen-views) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/5lgv47has6n8uhuv/branch/master?svg=true)](https://ci.appveyor.com/project/Atom/atom-space-pen-views/branch/master) [![Dependency Status](https://david-dm.org/atom/atom-space-pen-views.svg)](https://david-dm.org/atom/atom-space-pen-views)
 
 
