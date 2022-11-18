@@ -1,4 +1,4 @@
-{View, jQuery, $, $$, $$$} = require 'space-pen'
+{View, jQuery, $, $$, $$$} = require 'space-pen-plus'
 
 exports.View = View
 exports.jQuery = jQuery

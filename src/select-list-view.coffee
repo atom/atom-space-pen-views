@@ -1,4 +1,4 @@
-{$, View} = require 'space-pen'
+{$, View} = require 'space-pen-plus'
 TextEditorView = require './text-editor-view'
 
 fuzzyFilter = null # defer until used

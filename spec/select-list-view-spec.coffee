@@ -1,4 +1,4 @@
-{$, $$} = require 'space-pen'
+{$, $$} = require 'space-pen-plus'
 SelectListView = require '../src/select-list-view'
 
 describe "SelectListView", ->
@@ -54,7 +54,7 @@ describe "SelectListView", ->
 
   describe "when the text of the mini editor changes", ->
     beforeEach ->
-      $('#jasmine-content').append(selectList)
+      $(window.document.body).append(selectList)
 
     it "filters the elements in the list based on the scoreElement function and selects the first item", ->
       filterEditorView.getModel().insertText('la')
@@ -120,20 +120,20 @@ describe "SelectListView", ->
       expect(list.find('li:eq(1)')).toHaveClass 'selected'
 
     it "scrolls to keep the selected item in view", ->
-      $('#jasmine-content').append(selectList)
+      $(window.document.body).append(selectList)
       itemHeight = list.find('li').outerHeight()
       list.height(itemHeight * 2)
 
       atom.commands.dispatch filterEditorView.element, 'core:move-down'
       atom.commands.dispatch filterEditorView.element, 'core:move-down'
-      expect(list.scrollBottom()).toBe itemHeight * 3
+      expect(list.scrollBottom()).toBeCloseTo itemHeight * 3
 
       atom.commands.dispatch filterEditorView.element, 'core:move-down'
-      expect(list.scrollBottom()).toBe itemHeight * 4
+      expect(list.scrollBottom()).toBeCloseTo itemHeight * 4
 
       atom.commands.dispatch filterEditorView.element, 'core:move-up'
       atom.commands.dispatch filterEditorView.element, 'core:move-up'
-      expect(list.scrollTop()).toBe itemHeight
+      expect(list.scrollTop()).toBeCloseTo itemHeight
 
   describe "the core:confirm event", ->
     describe "when there is an item selected (because the list in not empty)", ->
@@ -145,7 +145,7 @@ describe "SelectListView", ->
 
     describe "when there is no item selected (because the list is empty)", ->
       beforeEach ->
-        $('#jasmine-content').append(selectList)
+        $(window.document.body).append(selectList)
 
       it "does not trigger the confirmed hook", ->
         filterEditorView.getModel().insertText("i will never match anything")
@@ -187,9 +187,9 @@ describe "SelectListView", ->
 
   describe "the core:move-to-top event", ->
     it "scrolls to the top, selects the first element, and does not bubble the event", ->
-      $('#jasmine-content').append(selectList)
+      $(window.document.body).append(selectList)
       moveToTopHandler = jasmine.createSpy("moveToTopHandler")
-      atom.commands.add '#jasmine-content', 'core:move-to-top': moveToTopHandler
+      atom.commands.add window.document.body, 'core:move-to-top': moveToTopHandler
 
       atom.commands.dispatch selectList.element, 'core:move-down'
       expect(list.find('li:eq(1)')).toHaveClass 'selected'
@@ -199,10 +199,10 @@ describe "SelectListView", ->
 
   describe "the core:move-to-bottom event", ->
     it "scrolls to the bottom, selects the last element, and does not bubble the event", ->
-      $('#jasmine-content').append(selectList)
+      $(window.document.body).append(selectList)
 
       moveToBottomHandler = jasmine.createSpy("moveToBottomHandler")
-      atom.commands.add '#jasmine-content', 'core:move-to-bottom': moveToBottomHandler
+      atom.commands.add window.document.body, 'core:move-to-bottom': moveToBottomHandler
 
       expect(list.find('li:first')).toHaveClass 'selected'
       atom.commands.dispatch selectList.element, 'core:move-to-bottom'

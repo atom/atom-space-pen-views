@@ -4,8 +4,10 @@
   "description": "Atom SpacePen views that used to live in core.",
   "main": "./lib/main",
   "scripts": {
+    "test": "atom --test spec",
     "prepublish": "grunt clean lint coffee"
   },
+  "atomTestRunner": "./runner",
   "repository": {
     "type": "git",
     "url": "https://github.com/atom/atom-space-pen-views.git"
@@ -21,17 +23,20 @@
   ],
   "dependencies": {
     "fuzzaldrin": "^2.1.0",
-    "space-pen": "^5.1.2"
+    "space-pen-plus": "^6.0.3"
   },
   "devDependencies": {
-    "coffee-script": "^1.7.0",
-    "jasmine-focused": "^1.0.4",
-    "grunt-contrib-coffee": "^0.9.0",
-    "grunt-cli": "^0.1.8",
-    "grunt": "^0.4.1",
-    "grunt-coffeelint": "^0.0.6",
-    "rimraf": "^2.2.2",
-    "coffee-cache": "^0.2.0",
-    "temp": "^0.6.0"
+    "atom-jasmine3-test-runner": "^4.4.7",
+    "jasmine": "^3.5.0",
+    "@types/jasmine": "^3.5.10",
+    "coffee-cache": "^1.0.2",
+    "coffeescript": "^1.12.7",
+    "grunt": "^1.1.0",
+    "grunt-cli": "^1.3.2",
+    "grunt-coffeelint": "^0.0.16",
+    "grunt-contrib-coffee": "1.0.0",
+    "jasmine-focused": "^1.0.7",
+    "rimraf": "^3.0.2",
+    "temp": "^0.9.1"
   }
 }
