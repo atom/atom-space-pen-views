@@ -1,12 +1,12 @@
-{$, View} = require 'space-pen'
-TextEditorView = require './text-editor-view'
+import {View, $} from 'space-pen-plus/src/space-pen'
+
+import TextEditorView from './text-editor-view'
 
 fuzzyFilter = null # defer until used
 
-atom.themes.requireStylesheet(require.resolve('../stylesheets/select-list.less'))
+atom.themes.requireStylesheet(__dirname + '/../stylesheets/select-list.less')
 
-module.exports =
-class SelectListView extends View
+export default class SelectListView extends View
   @content: ->
     @div class: 'select-list', =>
       @subview 'filterEditorView', new TextEditorView(mini: true)
@@ -163,7 +163,9 @@ class SelectListView extends View
 
     filterQuery = @getFilterQuery()
     if filterQuery.length
-      fuzzyFilter ?= require('fuzzaldrin').filter
+      # dynamic require if not already loaded
+      if fuzzyFilter == null
+        fuzzyFilter = require('fuzzaldrin').filter
       filteredItems = fuzzyFilter(@items, filterQuery, key: @getFilterKey())
     else
       filteredItems = @items
